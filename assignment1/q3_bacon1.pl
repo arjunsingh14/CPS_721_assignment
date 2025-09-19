@@ -3,8 +3,8 @@
 % If you have 2 group members, leave the last entry blank.
 %
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Arjun Bhandal
+%%%%% STUDENT ID: 501088530
 %%%%%
 %%%%% NAME:
 %%%%% STUDENT ID:
@@ -34,7 +34,27 @@
 %%%%% SECTION: q3a_can_reach
 % You define canReach and any helper predicates below.
 
+appeared(A) :-
+    actedIn(A, _, _).
 
+together(A, B) :-
+    actedIn(A, M, _),
+    actedIn(B, M, _),
+    not(A = B).
+
+canReach(A, A, M) :-
+    M >= 0,
+    appeared(A).
+
+canReach(A, B, M) :-
+    M > 0,
+    together(A, B).
+
+canReach(A, B, M) :-
+    M > 0,
+    together(A, C),
+    M1 is M - 1,
+    canReach(C, B, M1).
 
 
 
