@@ -3,8 +3,8 @@
 % If you have 2 group members, leave the last entry blank.
 %
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Arjun
+%%%%% STUDENT ID: 501088530
 %%%%%
 %%%%% NAME:
 %%%%% STUDENT ID:
@@ -41,6 +41,70 @@
 
 % Done going through needed movies, just find rest of path
 
+appeared(A) :-
+    actedIn(A, _, _).
+
+step(A, B, Mov) :-
+    actedIn(A, Mov, _),
+    actedIn(B, Mov, _),
+    not(A = B).
+
+canReachThrough2Movies(A, B, Mov1, Mov2, M) :-
+    M > 0,
+    reach2(A, A, B, Mov1, Mov2, no, no, 0, M).
+
+reach2(_, X, X, Mov1, Mov2, _, _, CntSame, M) :-
+    M >= 0,
+    Mov1 = Mov2,
+    CntSame >= 2.
+
+reach2(_, X, X, Mov1, Mov2, Used1, Used2, _, M) :-
+    M >= 0,
+    not(Mov1 = Mov2),
+    Used1 = yes,
+    Used2 = yes.
+
+reach2(S, A, B, Mov1, Mov2, U1, U2, Cnt, M) :-
+    M > 0,
+    Mov1 = Mov2,
+    step(A, C, Mov),
+    Mov = Mov1,
+    M1 is M - 1,
+    C1 is Cnt + 1,
+    reach2(S, C, B, Mov1, Mov2, U1, U2, C1, M1).
+
+reach2(S, A, B, Mov1, Mov2, U1, U2, Cnt, M) :-
+    M > 0,
+    Mov1 = Mov2,
+    step(A, C, Mov),
+    not(Mov = Mov1),
+    M1 is M - 1,
+    reach2(S, C, B, Mov1, Mov2, U1, U2, Cnt, M1).
+
+reach2(S, A, B, Mov1, Mov2, _U1, U2, Cnt, M) :-
+    M > 0,
+    not(Mov1 = Mov2),
+    step(A, C, Mov),
+    Mov = Mov1,
+    M1 is M - 1,
+    reach2(S, C, B, Mov1, Mov2, yes, U2, Cnt, M1).
+
+reach2(S, A, B, Mov1, Mov2, U1, _U2, Cnt, M) :-
+    M > 0,
+    not(Mov1 = Mov2),
+    step(A, C, Mov),
+    Mov = Mov2,
+    M1 is M - 1,
+    reach2(S, C, B, Mov1, Mov2, U1, yes, Cnt, M1).
+
+reach2(S, A, B, Mov1, Mov2, U1, U2, Cnt, M) :-
+    M > 0,
+    not(Mov1 = Mov2),
+    step(A, C, Mov),
+    not(Mov = Mov1),
+    not(Mov = Mov2),
+    M1 is M - 1,
+    reach2(S, C, B, Mov1, Mov2, U1, U2, Cnt, M1).
 
 
 
