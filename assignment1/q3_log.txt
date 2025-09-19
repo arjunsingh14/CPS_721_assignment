@@ -1,0 +1,118 @@
+% Enter the names of ID of your group members below.
+% For STUDENT ID, use your 9-digit ONECARD number.
+% If you have 2 group members, leave the last entry blank.
+%
+%%%%%
+%%%%% NAME:
+%%%%% STUDENT ID:
+%%%%%
+%%%%% NAME:
+%%%%% STUDENT ID:
+%%%%%
+%%%%% NAME:
+%%%%% STUDENT ID:
+
+
+% Add your queries below. Please use the following format
+% 
+% %%%%% QUERY 2
+% % EXPLANATION: Checks if there is a block on blockA
+% on(X, blockA).
+%
+% where 2 is the number of the query. The EXPLANATION line should contain your explanation 
+% in English of what the query tests. Omit the "%" on the line with the query
+% Don't forget to end queries with a period.
+
+
+
+
+
+%%%%% SECTION: q3a_queries
+% Put your queries for testing canReach in this section
+
+%%%%%% QUERY 1
+% EXPLANATION: 
+
+
+
+%%%%%% QUERY 2
+% EXPLANATION: 
+
+
+
+%%%%%% QUERY 3
+% EXPLANATION: 
+
+
+
+%%%%%% QUERY 4
+% EXPLANATION: 
+
+
+
+%%%%%% QUERY 5
+% EXPLANATION: 
+
+
+
+
+%%%%% SECTION: q3b_queries
+% Put your queries for testing canReachThroughMovie in this section
+
+%%%%%% QUERY 1
+% EXPLANATION: 
+
+
+
+%%%%%% QUERY 2
+% EXPLANATION: 
+
+
+
+%%%%%% QUERY 3
+% EXPLANATION: 
+
+
+
+%%%%%% QUERY 4
+% EXPLANATION: 
+
+
+
+%%%%%% QUERY 5
+% EXPLANATION: 
+
+
+
+
+%%%%% SECTION: q3c_queries
+% Put your queries for testing canReachThrough2Movies in this section
+
+%%%%%% QUERY 1
+% EXPLANATION: 
+
+
+
+%%%%%% QUERY 2
+% EXPLANATION: 
+
+
+
+%%%%%% QUERY 3
+% EXPLANATION: 
+
+
+
+%%%%%% QUERY 4
+% EXPLANATION: 
+
+
+
+%%%%%% QUERY 5
+% EXPLANATION: 
+
+
+
+
+%%%%% SECTION: q3_interaction_log
+% Put a log of your interaction of your tests with the above queries for all 3 parts here

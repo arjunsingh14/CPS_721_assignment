@@ -1,0 +1,17 @@
+% Enter the names of ID of your group members below.
+% For STUDENT ID, use your 9-digit ONECARD number.
+% If you have 2 group members, leave the last entry blank.
+%
+%%%%%
+%%%%% NAME:
+%%%%% STUDENT ID:
+%%%%%
+%%%%% NAME:
+%%%%% STUDENT ID:
+%%%%%
+%%%%% NAME:
+%%%%% STUDENT ID:
+
+
+%%%%% SECTION: q1_log
+% Put a log of your interaction of your testing with the queries here
