@@ -3,8 +3,8 @@
 % If you have 2 group members, leave the last entry blank.
 %
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Arjun Bhandal
+%%%%% STUDENT ID: 501088530
 %%%%%
 %%%%% NAME:
 %%%%% STUDENT ID:
@@ -37,10 +37,39 @@
 % include it below. To avoid collision if you first compile q3_bacon1 and then q3_bacon2,
 % we suggest you rename canReach to something else.
 % Do NOT use an import statement like the one in section q3b_kb_import to import and reuse
-% your answer to part (a) below. 
+% your answer to part (a) below.
 
+appeared(A) :-
+    actedIn(A, _, _).
 
+step(A, B, Mov) :-
+    actedIn(A, Mov, _),
+    actedIn(B, Mov, _),
+    not(A = B).
 
+canReachThroughMovie(A, B, Movie, M) :-
+    M > 0,
+    step(A, C, Movie),
+    M1 is M - 1,
+    reach_used(A, C, B, Movie, M1).
+
+canReachThroughMovie(A, B, Movie, M) :-
+    M > 0,
+    step(A, C, Mov),
+    not(Movie = Mov),
+    M1 is M - 1,
+    canReachThroughMovie(C, B, Movie, M1).
+
+reach_used(_, A, A, _, M) :-
+    M >= 0,
+    appeared(A).
+
+reach_used(Start, A, B, Movie, M) :-
+    M > 0,
+    step(A, C, Mov),
+    M1 is M - 1,
+    reach_used(Start, C, B, Movie, M1),
+    not(Start = B).
 
 
 %%%%% END

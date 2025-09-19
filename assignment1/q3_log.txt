@@ -60,27 +60,28 @@ canReach(tom_hanks, robert_pattinson, 1).
 % Put your queries for testing canReachThroughMovie in this section
 
 %%%%%% QUERY 1
-% EXPLANATION: 
-
+% EXPLANATION: Tests if Al Pacino and Diane Keaton can be linked in exactly 1 step through The Godfather. Should succeed. 
+canReachThroughMovie(al_pacino, diane_keaton, the_godfather, 1).
 
 
 %%%%%% QUERY 2
-% EXPLANATION: 
+% EXPLANATION: Checks if Al Pacino can reach Robert De Niro in at most 2 steps, with at least one step involving The Godfather Part II. Shold succeed.
+canReachThroughMovie(al_pacino, robert_de_niro, the_godfather_part_2, 2).
 
 
 %%%%%% QUERY 3
-% EXPLANATION: 
-
+% EXPLANATION: This should fail, since part (b) forbids self-loops as the way to satisfy the movie requirement.
+canReachThroughMovie(al_pacino, al_pacino, the_godfather, 1).
 
 
 %%%%%% QUERY 4
-% EXPLANATION: 
-
+% EXPLANATION: Lists all actors X that Al Pacino can connect to in ≤ 2 steps where The Godfather is used at least once.
+canReachThroughMovie(al_pacino, X, the_godfather, 2).
 
 
 %%%%%% QUERY 5
-% EXPLANATION: 
-
+% EXPLANATION Should fail, since Tom Hanks does not appear in the knowledge base and can’t be reached.: 
+canReachThroughMovie(tom_hanks, robert_de_niro, godfather, 2).
 
 
 
