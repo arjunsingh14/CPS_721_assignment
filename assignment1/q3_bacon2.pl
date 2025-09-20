@@ -9,8 +9,8 @@
 %%%%% NAME:
 %%%%% STUDENT ID:
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Golsa Momeni
+%%%%% STUDENT ID: 501202209
 %
 % Add the required statements in the q3a_can_reach_through_movie section below.
 % Any helper predicates should also be added to that section.
