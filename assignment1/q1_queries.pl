@@ -6,8 +6,8 @@
 %%%%% NAME: Arjun Bhandal
 %%%%% STUDENT ID: 501088530
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Golsa Momeni
+%%%%% STUDENT ID: 501202209
 %%%%%
 %%%%% NAME:
 %%%%% STUDENT ID:
