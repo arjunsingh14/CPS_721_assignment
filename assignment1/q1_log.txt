@@ -3,11 +3,11 @@
 % If you have 2 group members, leave the last entry blank.
 %
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Golsa Momeni
+%%%%% STUDENT ID: 501202209
 %%%%%
 %%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% STUDENT ID: 
 %%%%%
 %%%%% NAME:
 %%%%% STUDENT ID:
@@ -15,3 +15,120 @@
 
 %%%%% SECTION: q1_log
 % Put a log of your interaction of your testing with the queries here
+
+[eclipse 1]: ['q1_queries.pl'].
+source_processor.eco loaded in 0.01 seconds
+hash.eco   loaded in 0.00 seconds
+compiler_common.eco loaded in 0.01 seconds
+compiler_normalise.eco loaded in 0.00 seconds
+compiler_map.eco loaded in 0.00 seconds
+compiler_analysis.eco loaded in 0.00 seconds
+compiler_peephole.eco loaded in 0.01 seconds
+compiler_codegen.eco loaded in 0.01 seconds
+compiler_varclass.eco loaded in 0.00 seconds
+compiler_indexing.eco loaded in 0.00 seconds
+compiler_regassign.eco loaded in 0.00 seconds
+asm.eco    loaded in 0.01 seconds
+module_options.eco loaded in 0.00 seconds
+ecl_compiler.eco loaded in 0.07 seconds
+q1_queries.pl compiled 26584 bytes in 0.02 seconds
+
+Yes (0.09s cpu)
+[eclipse 2]: ['q1_movie_kb.pl'].
+q1_movie_kb.pl compiled 8016 bytes in 0.01 seconds
+
+Yes (0.01s cpu)
+[eclipse 3]: query1.
+
+Yes (0.00s cpu)
+[eclipse 4]: query2(Character).
+
+Character = andi_brand
+Yes (0.00s cpu)
+[eclipse 5]: query3(Actor).
+
+Actor = florence_pugh
+Yes (0.00s cpu)
+[eclipse 6]: query4(Actor).
+
+Actor = james_caan
+Yes (0.00s cpu, solution 1, maybe more) ? ;
+
+Actor = diane_keaton
+Yes (0.00s cpu, solution 2)
+[eclipse 7]: query5(Director).
+
+Director = emily_stone
+Yes (0.00s cpu, solution 1, maybe more) ? ;
+
+Director = sasha_brown
+Yes (0.00s cpu, solution 2, maybe more) ? ;
+
+No (0.00s cpu)
+[eclipse 8]: query6(Actor).
+
+Actor = florence_pugh
+Yes (0.00s cpu, solution 1, maybe more) ? ;
+
+Actor = florence_pugh
+Yes (0.00s cpu, solution 2, maybe more) ? ;
+
+No (0.00s cpu)
+[eclipse 9]: query7(Actor).
+
+Actor = al_pacino
+Yes (0.00s cpu, solution 1, maybe more) ? ;
+
+Actor = al_pacino
+Yes (0.00s cpu, solution 2, maybe more) ? ;
+
+No (0.00s cpu)
+[eclipse 10]: query8(Year).
+
+Year = 2010
+Yes (0.00s cpu, solution 1, maybe more) ? ;
+
+Year = 2012
+Yes (0.00s cpu, solution 2, maybe more) ? ;
+
+Year = 2013
+Yes (0.00s cpu, solution 3, maybe more) ? ;
+
+Year = 2014
+Yes (0.00s cpu, solution 4, maybe more) ? ;
+
+Year = 2015
+Yes (0.00s cpu, solution 5, maybe more) ? ;
+
+Year = 2016
+Yes (0.00s cpu, solution 6, maybe more) ? ;
+
+Year = 2017
+Yes (0.00s cpu, solution 7, maybe more) ? ;
+
+Year = 2018
+Yes (0.00s cpu, solution 8, maybe more) ? ;
+
+Year = 2019
+Yes (0.00s cpu, solution 9, maybe more) ? ;
+
+No (0.00s cpu)
+[eclipse 11]: query9(Actor).
+
+Actor = al_pacino
+Yes (0.00s cpu, solution 1, maybe more) ? ;
+
+Actor = al_pacino
+Yes (0.00s cpu, solution 2, maybe more) ? ;
+
+No (0.00s cpu)
+[eclipse 12]: query10(Movie).
+
+Movie = happy_hour
+Yes (0.00s cpu, solution 1, maybe more) ? ;
+
+No (0.00s cpu)
+[eclipse 13]: query11(Movie).
+
+Movie = tar
+Yes (0.00s cpu)
