@@ -24,25 +24,21 @@
 %%%%% SECTION: q2_kb
 %%%%% You should put the atomic statements for your KB below
 
-% Cost predicates - standard cost per unit
 cost(milk, 3.50).
 cost(tomato, 2.25).
 cost(orange, 1.80).
 cost(marshmallow, 4.00).
 cost(ice_cream, 5.99).
 
-% Number purchased predicates
 numPurchased(milk, 2).
 numPurchased(tomato, 5).
 numPurchased(orange, 3).
 numPurchased(marshmallow, 1).
 numPurchased(ice_cream, 2).
 
-% Two-for-one sale items
 twoForOneSale(orange).
 twoForOneSale(ice_cream).
 
-% Taxable items
 taxable(milk).
 taxable(tomato).
 taxable(ice_cream).

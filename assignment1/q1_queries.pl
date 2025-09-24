@@ -3,8 +3,8 @@
 % If you have 2 group members, leave the last entry blank.
 %
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Arjun Bhandal
+%%%%% STUDENT ID: 501088530
 %%%%%
 %%%%% NAME:
 %%%%% STUDENT ID:

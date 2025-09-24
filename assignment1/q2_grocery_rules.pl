@@ -32,7 +32,6 @@
 %%%%% SECTION: q2_rules
 %%%%% You should put your rules in this section, including helper predicates.
 
-% Rule 1: Get cost after tax for one item
 costPerUnitAfterTax(Product, AfterTax) :-
     cost(Product, BaseCost),
     taxable(Product),
@@ -43,7 +42,6 @@ costPerUnitAfterTax(Product, AfterTax) :-
     cost(Product, AfterTax),
     not(taxable(Product)).
 
-% Rule 2: Get total cost for all units of an item (with sales and tax)
 costPerUnitAfterTaxAndSale(Item, TotalCost) :-
     numPurchased(Item, Count),
     costPerUnitAfterTax(Item, UnitCost),
@@ -57,7 +55,6 @@ costPerUnitAfterTaxAndSale(Item, TotalCost) :-
     not(twoForOneSale(Item)),
     TotalCost is UnitCost * Count.
 
-% Rule 3: Get total cost for everything
 totalCost(Cost) :-
     costPerUnitAfterTaxAndSale(milk, MilkCost),
     costPerUnitAfterTaxAndSale(tomato, TomatoCost),
