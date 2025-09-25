@@ -3,11 +3,11 @@
 % If you have 2 group members, leave the last entry blank.
 %
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Arjun Bhandal
+%%%%% STUDENT ID: 501088530
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Golsa Momeni
+%%%%% STUDENT ID: 501202209
 %%%%%
 %%%%% NAME:
 %%%%% STUDENT ID:
@@ -24,6 +24,18 @@
 %%%%% SECTION: q2_rules
 %%%%% You should put your rules in this section, including helper predicates.
 %%%%% Predicate definition: increasingPowerSum(List, Power, PowerInc, Sum)
+
+increasingPowerSum(List, Power, PowerInc, Sum) :-
+    helper(List, Power, PowerInc, Sum).
+
+helper([], _, _, 0).
+
+helper([H|T], P, Inc, Sum) :-
+    HP is H ^ P,
+    P1 is P + Inc,
+    helper(T, P1, Inc, Rest),
+    Sum is HP + Rest.
+
 
 
 %%%%% END
