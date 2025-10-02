@@ -3,8 +3,8 @@
 % If you have 2 group members, leave the last entry blank.
 %
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Golsa Momeni
+%%%%% STUDENT ID: 501202209
 %%%%%
 %%%%% NAME:
 %%%%% STUDENT ID:
@@ -25,7 +25,18 @@
 %%%%% You should put your rules in this section, including helper predicates.
 %%%%% Predicate definition: zipper(List1, List2, Zipper)
 
-
+% Case 1: If the first list is empty, result will be the second list
+zipper(nil, L2, L2).
+% Case 2: If the second list is empty, result will be the first list
+zipper(L1, nil, L1).    
+% Case 3: Both lists have elements and are non-empty
+zipper(next(H1, T1), L2, next(H1, ZRest)) :-
+    zipper_alt(T1, L2, ZRest).
+% Helper predicate to alternate starting with List2
+zipper_alt(L1, next(H2, T2), next(H2, ZRest)) :-
+    zipper(L1, T2, ZRest).
+% If List2 runs out during alternation
+zipper_alt(L1, nil, L1).
 
 %%%%% END
 % DO NOT PUT ANY ATOMIC PROPOSITIONS OR LINES BELOW
