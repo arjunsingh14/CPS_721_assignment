@@ -49,6 +49,67 @@ testTree(1,
 %%%%% You should put your rules in this section, including helper predicates.
 %%%%% Predicate definition: highestCostPath(Tree, PathCost, PathList)
 
+% Base case: a leaf node
+highestCostPath(tree3(Name, _, none, _, none, _, none), 0, [Name]).
+
+% Case 1: only left child exists
+highestCostPath(tree3(Name, LC, L, _, none, _, none), TotalCost, [Name | Path]) :-
+    highestCostPath(L, SubCost, Path),
+    TotalCost is LC + SubCost.
+
+% Case 2: only middle child exists
+highestCostPath(tree3(Name, _, none, MC, M, _, none), TotalCost, [Name | Path]) :-
+    highestCostPath(M, SubCost, Path),
+    TotalCost is MC + SubCost.
+
+% Case 3: only right child exists
+highestCostPath(tree3(Name, _, none, _, none, RC, R), TotalCost, [Name | Path]) :-
+    highestCostPath(R, SubCost, Path),
+    TotalCost is RC + SubCost.
+
+% Case 4: left and middle children exist
+highestCostPath(tree3(Name, LC, L, MC, M, _, none), MaxCost, [Name | MaxPath]) :-
+    highestCostPath(L, CL, PL),
+    highestCostPath(M, CM, PM),
+    CostL is LC + CL,
+    CostM is MC + CM,
+    maxChildPath(CostL, PL, CostM, PM, MaxCost, MaxPath).
+
+% Case 5: left and right children exist
+highestCostPath(tree3(Name, LC, L, _, none, RC, R), MaxCost, [Name | MaxPath]) :-
+    highestCostPath(L, CL, PL),
+    highestCostPath(R, CR, PR),
+    CostL is LC + CL,
+    CostR is RC + CR,
+    maxChildPath(CostL, PL, CostR, PR, MaxCost, MaxPath).
+
+% Case 6: middle and right children exist
+highestCostPath(tree3(Name, _, none, MC, M, RC, R), MaxCost, [Name | MaxPath]) :-
+    highestCostPath(M, CM, PM),
+    highestCostPath(R, CR, PR),
+    CostM is MC + CM,
+    CostR is RC + CR,
+    maxChildPath(CostM, PM, CostR, PR, MaxCost, MaxPath).
+
+% Case 7: all three children exist
+highestCostPath(tree3(Name, LC, L, MC, M, RC, R), MaxCost, [Name | MaxPath]) :-
+    highestCostPath(L, CL, PL),
+    highestCostPath(M, CM, PM),
+    highestCostPath(R, CR, PR),
+    CostL is LC + CL,
+    CostM is MC + CM,
+    CostR is RC + CR,
+    maxOfThree(CostL, PL, CostM, PM, CostR, PR, MaxCost, MaxPath).
+
+% Helper predicate to choose max of two
+maxChildPath(C1, P1, C2, P2, C1, P1) :- C1 >= C2.
+maxChildPath(C1, _, C2, P2, C2, P2) :- C2 > C1.
+
+% Helper predicate to choose max of three
+maxOfThree(C1, P1, C2, P2, C3, P3, C1, P1) :- C1 >= C2, C1 >= C3.
+maxOfThree(C1, P1, C2, P2, C3, P3, C2, P2) :- C2 >= C1, C2 >= C3.
+maxOfThree(C1, P1, C2, P2, C3, P3, C3, P3) :- C3 >= C1, C3 >= C2.
+
 
 %%%%% END
 % DO NOT PUT ANY ATOMIC PROPOSITIONS OR LINES BELOW
