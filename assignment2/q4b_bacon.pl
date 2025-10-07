@@ -6,11 +6,11 @@
 %%%%% NAME: Bardia Shirsalimian
 %%%%% STUDENT ID: 501280070
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Arjun Bhandal
+%%%%% STUDENT ID: 501088530
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Golsa Momeni
+%%%%% STUDENT ID: 501202209
 %
 % Add the required statements in the q4a_rules section below.
 % Any helper predicates should also be added to that section.
