@@ -3,8 +3,8 @@
 % If you have 2 group members, leave the last entry blank.
 %
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Bardia Shirsalimian
+%%%%% STUDENT ID: 501280070
 %%%%%
 %%%%% NAME:
 %%%%% STUDENT ID:
@@ -30,11 +30,36 @@
 :- [movie_kb].
 
 
-
 %%%%% SECTION: q4a_rules
 %%%%% You should put your rules in this section, including helper predicates.
-%%%%% Predicate definition: canReach(A1, A2, M, ActPath, MoviePath)
+%%%%% Predicate definition: canReach(A1, A2, M, ActorPath, MoviePath)
 
+% Helper: actor must appear in at least one movie in the KB
+has_movie(A) :- acted_in(A, _).
+
+% Step to a neighbor actor via a shared movie, avoiding repeats of actors & movies
+step_next(Actor, NextActor, Movie, VisitedActors, VisitedMovies) :-
+    acted_in(Actor, Movie),
+    acted_in(NextActor, Movie),
+    not(Actor = NextActor),
+    not(member(NextActor, VisitedActors)),
+    not(member(Movie, VisitedMovies)).
+
+% Public API: M is assumed a non-negative integer given as input (per PDF)
+canReach(A1, A2, M, ActPath, MoviePath) :-
+    M >= 0,
+    canReach_aux(A1, A2, M, [A1], [], ActPath, MoviePath).
+
+% Base: an actor can reach themselves in 0 steps iff they appear in the KB
+canReach_aux(A, A, _M, _VA, _VM, [A], []) :-
+    has_movie(A).
+
+% Recurse: take one edge (Movie), track visited actors/movies, decrease M
+canReach_aux(A, B, M, VA, VM, [A|AT], [Movie|MT]) :-
+    M > 0,
+    step_next(A, NextA, Movie, VA, VM),
+    M1 is M - 1,
+    canReach_aux(NextA, B, M1, [NextA|VA], [Movie|VM], AT, MT).
 
 %%%%% END
-% DO NOT PUT ANY ATOMIC PROPOSITIONS OR LINES BELOW
+
