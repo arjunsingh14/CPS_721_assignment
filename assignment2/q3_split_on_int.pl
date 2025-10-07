@@ -3,8 +3,8 @@
 % If you have 2 group members, leave the last entry blank.
 %
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Bardia Shirsalimian
+%%%%% STUDENT ID: 501280070
 %%%%%
 %%%%% NAME:
 %%%%% STUDENT ID:
@@ -20,6 +20,16 @@
 % You may add additional comments as you choose but DO NOT MODIFY 
 % the already included comment lines below
 %
+% Base case
+splitOnInt([], _Value, [], []).
+
+splitOnInt([H | T], Value, [H | NL], L) :-
+    H =< Value,
+    splitOnInt(T, Value, NL, L).
+
+splitOnInt([H | T], Value, NL, [H | L]) :-
+    H > Value,
+    splitOnInt(T, Value, NL, L).
 
 %%%%% SECTION: q3_rules
 %%%%% You should put your rules in this section, including helper predicates.
