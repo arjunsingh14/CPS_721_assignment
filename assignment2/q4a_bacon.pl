@@ -37,7 +37,6 @@
 % Helper: actor must appear in at least one movie in the KB
 has_movie(A) :- acted_in(A, _).
 
-% Step to a neighbor actor via a shared movie, avoiding repeats of actors & movies
 step_next(Actor, NextActor, Movie, VisitedActors, VisitedMovies) :-
     acted_in(Actor, Movie),
     acted_in(NextActor, Movie),
@@ -45,7 +44,6 @@ step_next(Actor, NextActor, Movie, VisitedActors, VisitedMovies) :-
     not(member(NextActor, VisitedActors)),
     not(member(Movie, VisitedMovies)).
 
-% Public API: M is assumed a non-negative integer given as input (per PDF)
 canReach(A1, A2, M, ActPath, MoviePath) :-
     M >= 0,
     canReach_aux(A1, A2, M, [A1], [], ActPath, MoviePath).
@@ -54,7 +52,6 @@ canReach(A1, A2, M, ActPath, MoviePath) :-
 canReach_aux(A, A, _M, _VA, _VM, [A], []) :-
     has_movie(A).
 
-% Recurse: take one edge (Movie), track visited actors/movies, decrease M
 canReach_aux(A, B, M, VA, VM, [A|AT], [Movie|MT]) :-
     M > 0,
     step_next(A, NextA, Movie, VA, VM),
