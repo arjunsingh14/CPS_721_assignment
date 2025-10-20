@@ -1,0 +1,152 @@
+% Enter the names of ID of your group members below.
+% For STUDENT ID, use your 9-digit ONECARD number.
+% If you have 2 group members, leave the last entry blank.
+%
+%%%%%
+%%%%% NAME: Arjun Bhandal
+%%%%% STUDENT ID: 501088530
+%%%%%
+%%%%% NAME: Golsa Momeni
+%%%%% STUDENT ID: 501202209
+%%%%%
+%%%%% NAME: Bardia Shirsalimian
+%%%%% STUDENT ID: 501280070
+
+
+%%%%% QUESTION 1
+
+%%% [A] Document the output of your 3 generate and test programs, including the runtime.
+%%%     Make sure it is clear which output/runtime corresponds to which problem.
+5 customers:
+
+The problem was solved in 5.80799999738701e-6 seconds
+
+Travel from w to c3 (time: 70 mins)
+ --> Arrived within window [60, 180)
+
+Travel from c3 to c4 (time: 15 mins)
+ --> Arrived within window [60, 120)
+
+Travel from c4 to c1 (time: 35 mins)
+ --> Arrived within window [90, 150)
+
+Travel from c1 to c5 (time: 55 mins)
+ --> Arrived within window [150, 200)
+
+Travel from c5 to c2 (time: 50 mins)
+ --> Arrived within window [200, 400)
+
+8 customers:
+
+The problem was solved in 0.000913787000001776 seconds
+
+Travel from w to c3 (time: 70 mins)
+ --> Arrived within window [60, 180)
+
+Travel from c3 to c4 (time: 15 mins)
+ --> Arrived within window [60, 120)
+
+Travel from c4 to c1 (time: 35 mins)
+ --> Arrived within window [90, 150)
+
+Travel from c1 to c5 (time: 55 mins)
+ --> Arrived within window [150, 200)
+
+Travel from c5 to c6 (time: 100 mins)
+ --> Arrived within window [200, 320)
+
+Travel from c6 to c7 (time: 25 mins)
+ --> Arrived within window [200, 320)
+
+Travel from c7 to c2 (time: 45 mins)
+ --> Arrived within window [200, 400)
+
+Travel from c2 to c8 (time: 75 mins)
+ --> Arrived within window [330, 460)
+
+9 customers:
+
+The problem was solved in 0.0031856580000067 seconds
+
+Travel from w to c3 (time: 70 mins)
+ --> Arrived within window [60, 180)
+
+Travel from c3 to c4 (time: 15 mins)
+ --> Arrived within window [60, 120)
+
+Travel from c4 to c1 (time: 35 mins)
+ --> Arrived within window [90, 150)
+
+Travel from c1 to c5 (time: 55 mins)
+ --> Arrived within window [150, 200)
+
+Travel from c5 to c2 (time: 50 mins)
+ --> Arrived within window [200, 400)
+
+Travel from c2 to c6 (time: 25 mins)
+ --> Arrived within window [200, 320)
+
+Travel from c6 to c7 (time: 25 mins)
+ --> Arrived within window [200, 320)
+
+Travel from c7 to c9 (time: 45 mins)
+ --> Arrived within window [300, 360)
+
+Travel from c9 to c8 (time: 20 mins)
+ --> Arrived within window [330, 460)
+
+
+
+
+
+%%% [B] Document the output of your 3 interleaving programs, including the runtime.
+%%%     Make sure it is clear which output/runtime corresponds to which problem.
+%%%     Write a few sentences comparing the runtime between generate and test and
+%%%     interleaving.
+
+9 Customers:
+
+The problem was solved in 1.18030000066938e-5 seconds
+
+Valid delivery route: w -> c3 -> c4 -> c1 -> c5 -> c2 -> c6 -> c7 -> c9 -> c8
+
+17 customers:
+
+The problem was solved in 0.000444213999998055 seconds
+
+Valid delivery route: w -> c3 -> c4 -> c1 -> c5 -> c2 -> c7 -> c6 -> c9 -> c8 -> c15 -> c14 -> c12 -> c11 -> c17 -> c10 -> c13 -> c16
+
+18 customers:
+
+The problem was solved in 0.000820447999998919 seconds
+
+Valid delivery route: w -> c3 -> c4 -> c1 -> c5 -> c2 -> c7 -> c6 -> c9 -> c8 -> c15 -> c14 -> c12 -> c11 -> c17 -> c10 -> c13 -> c16 -> c18
+
+The comparison of runtimes clearly shows that the interleaving approach is vastly more efficient than the standard generate and test method. For the 9-customer problem, the interleaving program was over 250 times faster, solving it in approximately 0.01 milliseconds compared to over 3 milliseconds for the generate and test version. This performance difference becomes even more extreme as the problem size increases; the interleaving approach solved the 18-customer problem in under a millisecond, a task that would be computationally infeasible for the standard generate and test method which must check every single one of the 18! permutations. This is because interleaving prunes the search by immediately backtracking after a single invalid step, whereas the standard method must generate a complete, invalid path before discarding it.
+
+
+%
+%
+%
+%
+%%%%% QUESTION 2
+
+%%% [B] Document the output of your program, including runtime.
+
+
+
+
+
+
+
+
+
+%
+%
+%
+%
+%%%%% QUESTION 3
+
+%%% Document the output of your program, including runtime.
+
+
