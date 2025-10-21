@@ -133,11 +133,18 @@ The comparison of runtimes clearly shows that the interleaving approach is vastl
 
 %%% [B] Document the output of your program, including runtime.
 
+Output from solveAndPrint:
 
+The problem was solved in 0.0249 seconds
 
+--- Mooseville Network Solution ---
 
-
-
+System 1: bananas, Admin: catarina osborne
+System 2: firstbank, Admin: mona zickerman
+System 3: netvue, Admin: anthony wolverton
+System 4: pricenet, Admin: lizzie kim
+System 5: sysworld, Admin: jaime elby
+System 6: univmoose, Admin: daniel tsuji
 
 
 
