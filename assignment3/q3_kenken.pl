@@ -3,8 +3,8 @@
 % If you have 2 group members, leave the last entry blank.
 %
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Bardia Shirsalimian
+%%%%% STUDENT ID:501280070
 %%%%%
 %%%%% NAME:
 %%%%% STUDENT ID:
@@ -26,16 +26,86 @@
 
 %%% Put the domains for your variables below
 
-
+digit(1).
+digit(2).
+digit(3).
+digit(4).
 
 %%% Define any helper predicates here
 
+allDiff([]).
+allDiff([H|T]) :- not(member(H,T)) , allDiff(T).
 
+checkDiv(X,Y,Res) :-
+    X >= Y,
+    Res is X // Y.
+
+checkDiv(X,Y,Res) :-
+    X < Y,
+    Res is Y // X.
+
+checkSub(X,Y,Res) :-
+    X >= Y,
+    Res is X - Y.
+
+checkSub(X,Y,Res) :-
+    X < Y,
+    Res is Y - X.
 
 %%% Define solve below. Remember that solve should take in the list of
 %%% variables to assign. MAKE SURE TO BRIEFLY EXPLAIN THE MEANING OF
 %%% YOUR VARIABLES IN A COMMENT
 
+% each grid is a variable 
+% G11 , G12, G13, G14 
+% G21 , G22, G23, G24 
+% G31 , G32, G33, G34 
+% G41 , G42, G43, G44 
+
+solve([G11, G12, G13, G14, G21, G22, G23, G24, G31, G32, G33, G34, G41 , G42, G43, G44]) :-
+
+    digit(G11),digit(G12),digit(G13),
+    % checking that 12 and 13 div give 2
+    checkDiv(G12,G13,2),
+    digit(G14),
+    % line 1 must be allDiff
+    allDiff([G11,G12, G13, G14]),
+
+    digit(G21),
+    % top right sub must be 3
+    checkSub(G11,G21,3),
+    digit(G22), digit(G23),digit(G24),
+    % line 2 must be allDiff
+    allDiff([G21, G22, G23, G24]),
+
+    % check top right box sum is 6
+    6 is (G14 + G23 + G24),
+
+    digit(G31),digit(G32),
+    % mid box sum is 7
+    7 is (G22 + G32),
+    digit(G33),digit(G34),
+    % line 3 must be allDiff
+    allDiff([G31, G32, G33, G34]),
+
+    digit(G41),
+    % check col 1 to be allDiff
+    allDiff([G11, G21, G31, G41]),
+    % check bottem left div to be 1
+    checkSub(G31,G41,1),
+    digit(G42),digit(G43),
+    % check col 2 and 3
+    allDiff([G12, G22, G32, G42]),
+    allDiff([G13, G23, G33, G43]),
+    % check that 3 cells mult to 3
+    3 is (G33*G42*G43),
+    digit(G44),
+    % right bottem div must be 2
+    checkDiv(G34,G44,2),
+    % line 4 must be allDiff
+    allDiff([G41 , G42, G43, G44]),
+    % col 4 allDiff
+    allDiff([G14, G24, G34, G44]).
 
 
 %%% Define printSolution below. This should take in the list of variables 
@@ -43,7 +113,13 @@
 %%% human readable form.
 %%% REMEMBER TO LOG YOUR FINAL OUTPUT AND RUNTIME IN assignment3_report.pdf
 
-
+printSolution([G11, G12, G13, G14, G21, G22, G23, G24, G31, G32, G33, G34, G41 , G42, G43, G44]) :-
+    write(' ---------------'),nl,
+    write('| '),write(G11),write(' | '),write(G12),write(' | '),write(G13),write(' | '),write(G14),write(' |'),nl,
+    write('| '),write(G21),write(' | '),write(G22),write(' | '),write(G23),write(' | '),write(G24),write(' |'),nl,
+    write('| '),write(G31),write(' | '),write(G32),write(' | '),write(G33),write(' | '),write(G34),write(' |'),nl,
+    write('| '),write(G41),write(' | '),write(G42),write(' | '),write(G43),write(' | '),write(G44),write(' |'),nl,
+    write(' ---------------'),nl.
 
 %%%%% SECTION: q3_solve_and_print
 %%%%% The following calls the solve predicate, passes the variables to
