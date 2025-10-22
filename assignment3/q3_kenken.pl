@@ -10,7 +10,7 @@
 %%%%% STUDENT ID: 501202209
 %%%%%
 %%%%% NAME: Arjun Bhandal
-%%%%% STUDENT ID:
+%%%%% STUDENT ID: 501088530
 %
 % Add the required statements in the q4a_rules section below.
 % Any helper predicates should also be added to that section.
