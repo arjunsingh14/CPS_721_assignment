@@ -6,8 +6,8 @@
 %%%%% NAME: Golsa Momeni
 %%%%% STUDENT ID: 501202209
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Bardia Shirsalimian
+%%%%% STUDENT ID: 501280070
 %%%%%
 %%%%% NAME:
 %%%%% STUDENT ID:
