@@ -9,7 +9,7 @@
 %%%%% NAME:Golsa Momeni
 %%%%% STUDENT ID: 501202209
 %%%%%
-%%%%% NAME:
+%%%%% NAME: Arjun Bhandal
 %%%%% STUDENT ID:
 %
 % Add the required statements in the q4a_rules section below.
