@@ -38,6 +38,79 @@ currentYear(2025).
 %%%%% Those should appear in movie_kb.pl
 
 
+%% helper predicates for part a
+
+%% will succeed if Name is the name of any movie
+movie(Name) :-
+    releaseInfo(Name, _, _).
+
+%% will succeed if X is the name of any actor
+   
+actor(X) :-
+    actedIn(X, _, _).
+
+%% will succeed if X is the name of any director
+
+director(X) :-
+    directedBy(_, X).
+
+%% will succeed if X is the name of any character
+
+character(X) :-
+    actedIn(_, _, X).
+    
+%% will succeed if X is any genre that appears in the knowledge base
+
+genre(X) :-
+    movieGenre(_, X).
+
+%% will succeed if X is a release year for any movie
+
+releaseYear(X) :-
+    releaseInfo(_, X, _).
+
+%% will succeed if X is a movie length that appears in the knowledge base
+
+movieLength(X) :-
+    releaseInfo(_, _, X).
+
+%% helper predicates for part b
+
+newDirector(Name) :-
+    currentYear(Y),
+    directedBy(Movie, Name),
+    releaseInfo(Movie, Y, _),
+    not((directedBy(OldMovie, Name),
+         releaseInfo(OldMovie, OldYear, _),
+         OldYear < Y)).
+
+%% helper predicates for part c
+    
+newActor(Name) :-
+    currentYear(Y),
+    actedIn(Name, Movie, _),
+    releaseInfo(Movie, Y, _),
+    not((actedIn(Name, OldMovie, _),
+         releaseInfo(OldMovie, OldYear, _),
+         OldYear < Y)).
+
+%% helper predicate for part d
+
+genreDirector(Name, Genre) :-
+    directedBy(Movie1, Name),
+    directedBy(Movie2, Name),
+    movieGenre(Movie1, Genre),
+    movieGenre(Movie2, Genre),
+    not(Movie1 = Movie2).
+
+%% helper predicates for part e
+
+genreActor(Name, Genre) :-
+    actedIn(Name, Movie1, _),
+    actedIn(Name, Movie2, _),
+    movieGenre(Movie1, Genre),
+    movieGenre(Movie2, Genre),
+    not(Movie1 = Movie2).
 
 %%%%% SECTION: parser_import
 %%%%% This section imports the parser. By default, it imports the 
