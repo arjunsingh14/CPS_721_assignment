@@ -1,9 +1,9 @@
 % Enter the names of your group members below.
 % If you only have 2 group members, leave the last space blank
 %
-%%%%% NAME: Bardia Shirsalimian 501280070
-%%%%% NAME:
-%%%%% NAME:
+%%%%% NAME: Arjun Bhandal
+%%%%% NAME: Golsa Momeni
+%%%%% NAME: Bardia Shirsalimian
 %
 % This file contains the parser that you should edit for Q5.
 % The code below is the same as in original_parser.pl.

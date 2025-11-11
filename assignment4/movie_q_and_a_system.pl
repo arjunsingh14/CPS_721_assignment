@@ -2,10 +2,9 @@
 % If you only have 2 group members, leave the last space blank
 %
 %%%%%
-%%%%% NAME: 
-%%%%% NAME:
-%%%%% NAME:
-%
+%%%%% NAME: Arjun Bhandal
+%%%%% NAME: Golsa Momeni
+%%%%% NAME: Bardia Shirsalimian
 % Add the required rules in the corresponding sections. 
 % If you put the rules in the wrong sections, you will lose marks.
 %

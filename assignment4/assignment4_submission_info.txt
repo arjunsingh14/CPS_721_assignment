@@ -3,11 +3,13 @@
 % If you have 2 group members, leave the last entry blank.
 %
 %%%%%
+%%%%% NAME: Arjun Bhandal
+%%%%% STUDENT ID: 501088530
+%%%%%
 %%%%% NAME: Golsa Momeni
 %%%%% STUDENT ID: 501202209
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
-%%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Bardia Shirsalimian
+%%%%% STUDENT ID: 501280070
+
+

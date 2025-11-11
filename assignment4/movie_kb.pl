@@ -2,9 +2,10 @@
 % If you only have 2 group members, leave the last space blank
 %
 %%%%%
-%%%%% NAME:Golsa Momeni
-%%%%% NAME:Bardia Shirsalimian
-%%%%% NAME:Arjun Bhandal
+%%%%% NAME: Arjun Bhandal
+%%%%% NAME: Golsa Momeni
+%%%%% NAME: Bardia Shirsalimian
+
 
 % Put your movie KB in the section below
 
