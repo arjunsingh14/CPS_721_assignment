@@ -1,58 +1,100 @@
-% Enter the names of your group members below.
+%%%%% Enter the names of your group members below.
 % If you only have 2 group members, leave the last space blank
 %
-%%%%%
+%%%%% NAME: Bardia Shirsalimian 501280070
 %%%%% NAME: 
-%%%%% NAME:
-%%%%% NAME:
+%%%%% NAME: 
 %
+
 % Add your test queries below, along with a description of the test you are performing.
 % The format can look as follows
-% 
 %
+% %%%%%% QUERY 1
+% % Description: Example description...
+% ?- what([a, movie], M).
+% M = some_movie
+% yes.
+%
+% Make sure each query is different from the examples in the assignment handout.
 
 %%%%%% QUERY 1
-
-
+% Description: Retrieve any horror movie in the knowledge base.
+?- what([a, horror, movie], M).
+% Sample output:
+% M = some_horror_movie_1
+% M = some_horror_movie_2
+% yes.
 
 %%%%%% QUERY 2
-
-
+% Description: Find an actor who appears in an action movie.
+?- what([an, actor, in, an, action, movie], A).
+% Sample output:
+% A = some_action_actor_1
+% A = some_action_actor_2
+% yes.
 
 %%%%%% QUERY 3
-
-
+% Description: Test adjective + noun: short movie.
+?- what([a, short, movie], M).
+% Sample output:
+% M = some_short_movie
+% yes.
 
 %%%%%% QUERY 4
-
-
+% Description: Test genre-actor adjective (actor with history in comedy).
+?- what([a, comedy, actor], A).
+% Sample output:
+% A = some_comedy_actor
+% yes.
 
 %%%%%% QUERY 5
-
-
+% Description: Test director-name-as-adjective for movies.
+?- what([a, christopher_nolan, film], M).
+% Sample output:
+% M = some_nolan_movie
+% M = another_nolan_movie
+% yes.
 
 %%%%%% QUERY 6
-
-
+% Description: Test character lookup: character in a specific movie.
+?- what([the, character, in, inception], C).
+% Sample output:
+% C = some_character_1
+% C = some_character_2
+% yes.
 
 %%%%%% QUERY 7
-
-
+% Description: Test “with” for actors: a film with a given actor.
+?- what([a, movie, with, tom_cruise], M).
+% Sample output:
+% M = some_tom_cruise_movie
+% yes.
 
 %%%%%% QUERY 8
-
-
+% Description: Test “of” with length.
+?- what([the, length, of, the, horror, movie], L).
+% Sample output:
+% L = 90
+% L = 100
+% yes.
 
 %%%%%% QUERY 9
-
-
+% Description: Enumerate all genres appearing in the KB.
+?- what([a, genre], G).
+% Use "More" repeatedly:
+% G = horror
+% G = comedy
+% G = drama
+% ...
+% yes.
 
 %%%%%% QUERY 10
-
-
-
+% Description: Combined modifiers: a new sci_fi movie with a specific actor.
+?- what([a, new, scifi, movie, with, florence_pugh], M).
+% Sample output:
+% M = some_new_scifi_movie
+% yes.
 
 %%%%%% INTERACTION LOG
-
-
-
+% The outputs above illustrate the form of the interaction log.
+% Repeated answers (due to multiple parses or synonyms) are acceptable.
