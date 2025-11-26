@@ -2,9 +2,9 @@
 % If you only have 2 group members, leave the last space blank
 %
 %%%%%
-%%%%% NAME: 
-%%%%% NAME:
-%%%%% NAME:
+%%%%% NAME: Golsa Momeni
+%%%%% NAME: Bardia Shirsalimian
+%%%%% NAME: Arjun Bhandal
 %
 % Add the required rules in the corresponding sections. 
 % If you put the rules in the wrong sections, you will lose marks.
@@ -86,7 +86,62 @@ item(X) :- scrubber(X).
 %%%%% are instantiated by constants before you apply negation to the predicate that 
 %%%%% mentions these variables. 
 
+%%%%% pickUp(X,P)
+    
+poss(pickUp(X, P), S) :-
+    item(X),               % X is a valid item
+    place(P),              % P is a valid place
+    loc(X, P, S),          % X is at place P
+    numHolding(C, S),      % robot holding less than 2 items
+    C < 2,
+    not(holding(X, S)).    % robot is not already holding X
+    
+%%%%% putDown(X,P)
 
+poss(putDown(X, P), S) :-
+    item(X),         % X is a valid item
+    place(P),        % P is a valid place
+    holding(X, S).   % robot is holding X
+
+%%%%% turnOnFaucet
+    
+poss(turnOnFaucet, S) :-
+    numHolding(C, S),
+    C < 2,                % robot is holding less than 2 items
+    not(faucetOn(S)).     % faucet is off
+
+%%%%% turnOffFaucet
+    
+poss(turnOffFaucet, S) :- faucetOn(S), numHolding(C,S), C < 2.
+
+%%%%% addSoap(X)
+    
+poss(addSoap(X), S) :-
+    scrubber(X),           % X must be a scrubber
+    holding(X, S),         % robot is holding the scrubber
+    numHolding(C, S),      
+    C < 2.                 % robot has a free hand
+    
+%%%%% two preconditions needed for scrub(X,Y)
+    
+poss(scrub(X, Y), S) :-
+    glassware(X),
+    Y = brush,
+    holding(X, S),
+    holding(Y, S).
+
+poss(scrub(X, Y), S) :-
+    plate(X),
+    Y = sponge,
+    holding(X, S),
+    holding(Y, S).
+    
+%%%%% rinse(X)
+ 
+poss(rinse(X), S) :-
+    item(X),          % X can be any item (scrubber or dish)
+    faucetOn(S),      % faucet must be ON
+    holding(X, S).    % robot must be holding X
 
 
 %%%%% SECTION: successor_state_axioms_dishwashing
@@ -103,7 +158,79 @@ item(X) :- scrubber(X).
 %%%%%
 %%%%% Write your successor state rules here: you have to write brief comments %
 
+% positive effect rule: X becomes held after pickUp
+holding(X, [pickUp(X,P) | S]).
 
+% persistence rule: X stays held unless it was put down
+holding(X, [A | S]) :-
+    not A = putDown(X,P),
+    not A = pickUp(X,P),
+    holding(X, S).
+
+% positive effect rule: picking up will increase the count
+
+numHolding(C2, [pickUp(X,P) | S]) :-
+    numHolding(C1, S),
+    C2 is C1 + 1.
+
+% negative effect rule: putting down will decrease the count
+    
+numHolding(C2, [putDown(X,P) | S]) :-
+    numHolding(C1, S),
+    C2 is C1 - 1.
+
+% persistence rule: count stays the same
+
+numHolding(C, [A | S]) :-
+    not A = pickUp(X,P),
+    not A = putDown(X,P),
+    numHolding(C, S).
+
+% positive effect rule: faucet becomes on after turnOnFaucet
+    
+faucetOn([turnOnFaucet | S]).
+
+% persistence rule
+    
+faucetOn([A | S]) :-
+    not A = turnOffFaucet,
+    not A = turnOnFaucet,
+    faucetOn(S).
+
+% positive effect rule
+    
+loc(X,P, [putDown(X,P) | S]).
+
+% persistence rule
+    
+loc(X,P, [A | S]) :-
+    not A = putDown(X,P),
+    not A = pickUp(X,P),
+    loc(X,P, S).
+
+% positive effect rule 
+
+wet(X, [rinse(X) | S]).
+
+% persistence rule
+    
+wet(X, [A | S]) :-
+    not A = rinse(X),
+    wet(X, S).
+
+% persistence rule: dirty persists unless it is removed by rinsing
+dirty(X, [A | S]) :-
+    not A = rinse(X),
+    dirty(X, S).
+
+% positive effect rule
+soapy(X, [addSoap(X) | S]).
+
+% persistence rule: soapy persists unless X is rinsed or soap is added
+soapy(X, [A | S]) :-
+    not A = rinse(X),
+    not A = addSoap(X),
+    soapy(X, S).
 
 
 %%%%% SECTION: declarative_heuristics_dishwashing
@@ -121,5 +248,33 @@ item(X) :- scrubber(X).
 %%%%%	
 %%%%% write your rules implementing the predicate  useless(Action, History) here. %
 
+% 1: Putting something down and immediately picking it up again is useless
+useless(pickUp(X,P), [putDown(X,P) | S]).
+
+% 2: Picking something up and immediately putting it down is useless
+useless(putDown(X,P), [pickUp(X,P) | S]).
+    
+% 3: If the last action was turning off the faucet, then turning it immediately on is useless.
+useless(turnOnFaucet, [turnOffFaucet | S]).
+
+% 4: If the last action was turning on the faucet, then turning it immediately off is useless.
+useless(turnOffFaucet, [turnOnFaucet | S]).
 
 
+% 5: Adding soap immediately after rinsing X is useless
+useless(addSoap(X), [rinse(X) | S]).
+
+% 6: Rinsing X immediately after adding soap does nothing
+useless(rinse(X), [addSoap(X) | S]).
+
+% 7: Adding soap twice in a row is useless
+useless(addSoap(X), [addSoap(X) | S]).
+
+% 8: Scrubbing the same dish twice in a row is useless
+useless(scrub(X, Y), [scrub(X, Y) | S]).
+
+% 9: Rinsing the same item twice in a row is useless
+useless(rinse(X), [rinse(X) | S]).
+
+% 10: Scrubbing immediately after rinsing the scrubber is useless (scrubber has no soap)
+useless(scrub(X, Y), [rinse(Y) | S]).
