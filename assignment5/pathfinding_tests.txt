@@ -3,9 +3,9 @@
 % If you only have 2 group members, leave the last space blank
 %
 %%%%%
-%%%%% NAME:
-%%%%% NAME:
-%%%%% NAME:
+%%%%% NAME: Arjun Bhandal
+%%%%% NAME: Golsa Momeni
+%%%%% NAME: Bardia Shirsalimian
 %
 
 %%%%% SECTION: cpu_details

@@ -3,8 +3,8 @@
 %
 %%%%%
 %%%%% NAME: Arjun Bhandal
-%%%%% NAME:
-%%%%% NAME:
+%%%%% NAME: Golsa Momeni
+%%%%% NAME: Bardia Shirsalimian
 %
 % Add the required rules in the corresponding sections. 
 % If you put the rules in the wrong sections, you will lose marks.
