@@ -1,0 +1,57 @@
+
+% Enter the names of your group members below.
+% If you only have 2 group members, leave the last space blank
+%
+%%%%%
+%%%%% NAME:
+%%%%% NAME:
+%%%%% NAME:
+%
+
+%%%%% SECTION: cpu_details
+%%%%% Describe the system you ran your tests on below.
+%%%%% It should include information about the processor (mainly speed), 
+%%%%% amount of RAM, and operator system you ran your tests on.
+Apple M3 Pro
+18 GB
+macOS 15.6.1
+
+%%%%% SECTION: summary
+%%%%% Summarize your results in 5-10 sentences. Describe which states you tested on, 
+%%%%% which ones ran in a reasonable amount of time (and how long they took), and 
+%%%%% how much speedup you saw when using declarative heuristics. Report any other 
+%%%%% interesting behaviour you saw.
+We tested the planner on goal states 11, 14, 15, and 21. All tested goals were solved in a reasonable amount of time on the Apple M3 Pro system. Goal 11 was solved almost instantaneously (0.00s). Goal 14 took approximately 0.05 seconds in regular mode. Goal 15 took 0.28 seconds in regular mode, but when using declarative heuristics, the time dropped significantly to 0.0016 seconds, demonstrating a massive speedup. Goal 21 was also solved efficiently in regular mode, taking about 0.23 seconds. 
+The declarative heuristics proved highly effective in pruning the search space, particularly for Goal 15, reducing the runtime by orders of magnitude.
+
+
+
+%%%%% SECTION: log
+%%%%% Show the actual queries you ran below, along with the output
+%%%%% This should include runtime and the actual plan found
+solve_problem(regular, 11, 10, Plan).
+Plan = [move(a1, 0, 0, 0, 1), move(a1, 1, 0, 0, 0)]
+Yes (0.00s cpu, solution 1, maybe more)
+Elapsed time (sec): 9.89100000000492e-6
+
+solve_problem(regular, 14, 15, Plan).
+Plan = [move(a1, 1, 2, 2, 2), move(a2, 2, 2, 2, 1), move(a1, 0, 2, 1, 2), move(a2, 1, 2, 2, 2), move(a1, 0, 1, 0, 2), move(a2, 0, 2, 1, 2), move(a1, 0, 0, 0, 1), move(a1, 1, 0, 0, 0)]
+Yes (0.05s cpu, solution 1, maybe more)
+
+0.046837642
+
+solve_problem(regular, 15, 15, Plan).
+Plan = [move(a1, 2, 2, 3, 2), move(a1, 1, 2, 2, 2), move(a2, 2, 2, 2, 1), move(a1, 0, 2, 1, 2), move(a2, 1, 2, 2, 2), move(a1, 0, 1, 0, 2), move(a2, 0, 2, 1, 2), move(a1, 0, 0, 0, 1), move(a1, 1, 0, 0, 0)]
+Yes (0.28s cpu, solution 1, maybe more)
+Elapsed time (sec): 0.276305386
+
+solve_problem(heuristic, 15, 15, Plan).
+Plan = [move(a1, 2, 2, 3, 2), move(a1, 1, 2, 2, 2), move(a2, 2, 2, 2, 1), move(a1, 0, 2, 1, 2), move(a2, 1, 2, 2, 2), move(a1, 0, 1, 0, 2), move(a2, 0, 2, 1, 2), move(a1, 0, 0, 0, 1), move(a1, 1, 0, 0, 0)]
+Yes (0.00s cpu, solution 1, maybe more)
+Elapsed time (sec): 0.00157880899999996
+
+solve_problem(regular, 21, 20, Plan).
+Plan = [move(a5, 3, 3, 3, 4), move(a5, 3, 2, 3, 3), move(a4, 1, 0, 0, 0), move(a4, 1, 1, 1, 0), move(a3, 0, 4, 0, 3), move(a2, 0, 3, 0, 2), move(a1, 0, 2, 0, 1)]
+Yes (0.23s cpu, solution 1, maybe more)
+
+Elapsed time (sec): 0.229789098

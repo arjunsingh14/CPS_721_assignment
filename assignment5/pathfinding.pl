@@ -2,7 +2,7 @@
 % If you only have 2 group members, leave the last space blank
 %
 %%%%%
-%%%%% NAME: 
+%%%%% NAME: Arjun Bhandal
 %%%%% NAME:
 %%%%% NAME:
 %
@@ -72,7 +72,22 @@ goal_state(23, S) :- agentLoc(a1, 2, 4, S).
 %%%%% are instantiated by constants before you apply negation to the predicate that 
 %%%%% mentions these variables. 
 
+% Helper to check if any agent is at a specific location
+agentAt(R, C, S) :- agentLoc(_, R, C, S).
 
+poss(move(Agent, R1, C1, R2, C2), S) :-
+    agent(Agent),
+    agentLoc(Agent, R1, C1, S),
+    % Generate valid neighbor coordinates (up, down, left, right)
+    member([DR, DC], [[0, 1], [0, -1], [1, 0], [-1, 0]]),
+    R2 is R1 + DR,
+    C2 is C1 + DC,
+    % Bounds checks
+    numRows(NR), R2 >= 0, R2 < NR,
+    numCols(NC), C2 >= 0, C2 < NC,
+    % Obstacle checks
+    not wallAt(R2, C2),
+    not agentAt(R2, C2, S).
 
 
 %%%%% SECTION: successor_state_axioms_pathfinding
@@ -89,6 +104,14 @@ goal_state(23, S) :- agentLoc(a1, 2, 4, S).
 %%%%%
 %%%%% Write your successor state rules here: you have to write brief comments %
 
+% Case 1: Agent moves into (R, C)
+agentLoc(A, R, C, [M|S]) :-
+    M = move(A, _, _, R, C).
+
+% Case 2: Agent was at (R, C) and did not move away
+agentLoc(A, R, C, [M|S]) :-
+    agentLoc(A, R, C, S),
+    not M = move(A, R, C, _, _).
 
 
 %%%%% SECTION: declarative_heuristics_pathfinding
@@ -106,3 +129,34 @@ goal_state(23, S) :- agentLoc(a1, 2, 4, S).
 %%%%%	
 %%%%% write your rules implementing the predicate  useless(Action,History) here. %
 
+% Heuristic 1: Inverse Action. 
+% Prune moving immediately back to the location the agent just came from.
+useless(move(A, _, _, ROld, COld), [move(A, ROld, COld, _, _) | _]).
+
+% Heuristic 2: 3-Cycle. 
+% Prune visiting a location if the agent was there 2 steps ago (short loops).
+useless(move(A, _, _, R, C), [move(A, _, _, _, _), move(A, R, C, _, _) | _]).
+
+% Heuristic 3a: Coordinate-based Symmetry Breaking (Row Priority)
+% If two independent actions occur sequentially, force an order (smaller coord first).
+% This rule prunes if Row2 < Row1.
+useless(move(A2, R2S, C2S, R2E, C2E), [move(A1, R1S, C1S, R1E, C1E) | _]) :-
+    not A1 = A2,
+    % Independence Check: Ensure neither action affects the other's start or end
+    not (R1S = R2E, C1S = C2E), % A1 start != A2 end
+    not (R1E = R2S, C1E = C2S), % A1 end != A2 start
+    not (R1E = R2E, C1E = C2E), % Destinations distinct
+    % Order Check: Prune if A2's start row is less than A1's start row
+    R2S < R1S.
+
+% Heuristic 3b: Coordinate-based Symmetry Breaking (Col Priority if Rows Equal)
+% This rule prunes if Row2 = Row1 AND Col2 < Col1.
+useless(move(A2, R2S, C2S, R2E, C2E), [move(A1, R1S, C1S, R1E, C1E) | _]) :-
+    not A1 = A2,
+    % Independence Check
+    not (R1S = R2E, C1S = C2E), 
+    not (R1E = R2S, C1E = C2S), 
+    not (R1E = R2E, C1E = C2E), 
+    % Order Check: Prune if Rows are equal AND A2's start col is less than A1's
+    R2S = R1S,
+    C2S < C1S.
